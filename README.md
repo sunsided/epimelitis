@@ -56,6 +56,8 @@ However, Talos Linux [v1.6.4] does not support Raspberry Pi 5.
 After booting from its image, the Pi gives this:
 
 ```log
+Device-tree file "bcm2712-rpi-5-b.dtb" not found
+
 The installed operating system (OS) does not indicate support for Raspberry Pi 5
 Update the OS or set os_check=0 in config.txt to skip this check.
 ```
