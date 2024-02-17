@@ -28,7 +28,7 @@ spec:
           - name: tcp-ws
             containerPort: 9001
         volumeMounts:
-          - mountPath: /etc/mosquitto/
+          - mountPath: /mosquitto/config/
             name: config
           - mountPath: /mosquitto/data/
             name: data
