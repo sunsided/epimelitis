@@ -7,13 +7,6 @@ namespace: home-assistant
 resources:
   - ../base
 
-configMapGenerator:
-  - name: home-assistant-config
-    namespace: home-assistant
-    behavior: replace
-    literals:
-      - TZ="Europe/Berlin"
-
 patches:
   - target:
       version: v1
@@ -32,7 +25,3 @@ patches:
 #      - op: replace
 #        path: /spec/rules/0/host
 #        value: example.com
-
-images:
-  - name: ghcr.io/home-assistant/home-assistant
-    newTag: "2024.2.2"

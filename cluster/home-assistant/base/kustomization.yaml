@@ -6,7 +6,7 @@ namespace: home-assistant
 
 images:
   - name: ghcr.io/home-assistant/home-assistant
-    newTag: "2024.2"
+    newTag: "2024.2.2"
 
 resources:
   - namespace.yaml
@@ -24,7 +24,7 @@ configMapGenerator:
   - name: home-assistant-config
     namespace: home-assistant
     literals:
-      - TZ="UTC"
+      - TZ="Europe/Berlin"
   - name: home-assistant-config-files
     namespace: home-assistant
     files:
