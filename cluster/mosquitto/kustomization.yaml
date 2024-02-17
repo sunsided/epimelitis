@@ -13,7 +13,6 @@ resources:
   - persistent-volume-claim.yaml
   - deployment.yaml
   - services.yaml
-  - ingress.yaml
 
 commonLabels:
   app.kubernetes.io/name: mosquitto
