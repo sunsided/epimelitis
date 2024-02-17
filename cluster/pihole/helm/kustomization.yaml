@@ -63,7 +63,7 @@ helmCharts:
         ingressClassName: nginx
         hosts:
           - pi.hole
-          - pi-hole.home
+          - pi-hole.home      # http://pi-hole.home/admin
           - pi.hole.home
           - pi-hole.fritz.box
           - pi.hole.fritz.box

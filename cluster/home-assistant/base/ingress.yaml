@@ -33,13 +33,3 @@ spec:
               name: home-assistant
               port:
                 name: "http"
-    - host: "home-assistant"
-      http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: home-assistant
-              port:
-                name: "http"
