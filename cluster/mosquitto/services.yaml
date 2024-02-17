@@ -4,7 +4,11 @@ kind: Service
 metadata:
   name: mosquitto-mqtt
   namespace: mosquitto
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 10.30.200.2
+    metallb.universe.tf/allow-shared-ip: mosquitto
 spec:
+  type: LoadBalancer
   selector:
     app: mosquitto
   ports:
@@ -16,6 +20,9 @@ kind: Service
 metadata:
   name: mosquitto-mqtts
   namespace: mosquitto
+  annotations:
+    # metallb.universe.tf/loadBalancerIPs: 10.30.200.2
+    # metallb.universe.tf/allow-shared-ip: mosquitto
 spec:
   # type: NodePort
   selector:
@@ -30,6 +37,9 @@ kind: Service
 metadata:
   name: mosquitto-ws
   namespace: mosquitto
+  annotations:
+    # metallb.universe.tf/loadBalancerIPs: 10.30.200.2
+    # metallb.universe.tf/allow-shared-ip: mosquitto
 spec:
   type: ClusterIP
   selector:
