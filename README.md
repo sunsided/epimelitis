@@ -1,7 +1,7 @@
-# Επιμελητής 
+# Επιμελητής
 
 > **επιμελητής** **•** (epimelitís) _m_ (_plural_ **επιμελητές**, _feminine_ **επιμελήτρια**)
-> 
+>
 > one who takes care of a thing, in an official capacity; a curator, an editor, (law) a caretaker or guardian
 
 For this experiment I'll be using a Raspberry Pi 5
@@ -42,12 +42,12 @@ Following the [setup-alpine] instructions,
 From your regular machine, run `ssh-copy-id <USER>@<IP>`.
 If this works you can unplug the display and keyboard.
 
-See also [Granting Your User Administrative Access] for 
+See also [Granting Your User Administrative Access] for
 `doas` (`sudo` in Ubuntu lingo). As `root`, run
 
 ```
-apk add doas 
-echo 'permit :wheel' > /etc/doas.d/doas.conf 
+apk add doas
+echo 'permit :wheel' > /etc/doas.d/doas.conf
 addgroup <USER> wheel
 ```
 
@@ -99,7 +99,7 @@ Add the scripts that will create bridges off `/etc/network/interfaces`:
 apk add bridge
 ```
 
-Change your `/etc/network/interfaces` to 
+Change your `/etc/network/interfaces` to
 
 - disable `dhcp` on your `eth0`
 - add `iface brlan inet dhcp`
@@ -136,6 +136,11 @@ If it fails, reconnect your keyboard ...
 
 > In order to use libvirtd to remotely control KVM over ssh PolicyKit needs a `.pkla` informing it that this is allowed. Write the following file to `/etc/polkit-1/localauthority/50-local.d/50-libvirt-ssh-remote-access-policy.pkla`
 
+```shell
+apk add dbus polkit
+rc-update add dbus
+```
+
 We do that:
 
 ```shell
@@ -150,17 +155,31 @@ cat <<EOF > file.txt
 EOF
 ```
 
+For the Terraform `libvirt` provider to work, we also need
+to enable TCP forwarding for the SSH server.
+
+```shell
+sed -i '/^AllowTcpForwarding no$/s/no/yes/' /etc/ssh/sshd_config
+service sshd restart
+```
+
 ### Enable automatic suspension and restart of Guests
 
-> The `libvirt-guests` service (available from Alpine 3.13.5) 
+> The `libvirt-guests` service (available from Alpine 3.13.5)
 > allows running guests to be automatically suspended or shut
 > down when the host is shut down or rebooted.
-> 
-> The service is configured in /etc/conf.d/libvirt-guests. 
+>
+> The service is configured in /etc/conf.d/libvirt-guests.
 > Enable the service with:
 
 ```shell
 rc-update add libvirt-guests
+```
+
+## 2. Getting `talosctl`
+
+```shell
+curl -sL https://talos.dev/install | sh
 ```
 
 ## 100. Setting up Talos Linux
@@ -184,7 +203,7 @@ I used Raspberry Pi Imager 1.8.5.
 
 - For `Raspberry Pi Device`, select Raspberry Pi 5.
 - For `Operating System`, select _Misc utility images_ > _Bootloader (Pi 5 family)_ > _USB Boot_.
-This way if things go sideways you can still boot from USB 
+This way if things go sideways you can still boot from USB
 without having to fiddle with the SD card.
 - For `Storage`, select _Generic- SD/MMC/MS PRO_ or whatever resembles your SD card. If it doesn't show up, remove and add it back it. Do not unmount it.
 - Click `Next` and follow through.
@@ -206,7 +225,7 @@ without having to fiddle with the SD card.
 
 ### Downloading the Talos Linux image
 
-At the time of writing this, Talos Linux [v1.6.4] was the latst release. 
+At the time of writing this, Talos Linux [v1.6.4] was the latst release.
 
 [v1.6.4]: https://github.com/siderolabs/talos/releases/tag/v1.6.4
 
@@ -242,9 +261,9 @@ using a microSD to SD adapter, the card showed up as `/dev/sda` for me (as my ma
 YMMV! Do check with `lsblock` and look for a drive of the currect size.
 
 ```text
-sda                       8:0    1 238,3G  0 disk  
+sda                       8:0    1 238,3G  0 disk
 └─sda1                    8:1    1   256M  0 part  /media/user/848A-864E
-nvme0n1                 259:0    0   3,6T  0 disk  
+nvme0n1                 259:0    0   3,6T  0 disk
 ├─nvme0n1p1             259:1    0     1G  0 part  /boot
 ├─nvme0n1p2             259:2    0   512M  0 part  /boot/efi
 └─nvme0n1p3             259:3    0   3,6T  0 part
@@ -264,17 +283,17 @@ Unplug and replug the SD card and mount the EFI partition.
 In my case, this is `/dev/sda1` as identfied as `vfat   FAT32 EFI` by `fdisk -f`:
 
 ```text
-sdb                                                                           
+sdb
 ├─sdb1
 │    vfat   FAT32 EFI   BC40-EF66                                37,9M    62%
 ├─sdb2
-│                                                                             
+│
 ├─sdb3
 │    xfs          BOOT  2db5c4ca-f185-4380-ae7f-fea16071f15e    777,2M    17%
 ├─sdb4
-│                                                                             
+│
 ├─sdb5
-│                                                                             
+│
 └─sdb6
 ```
 
@@ -314,4 +333,3 @@ dtoverlay=disable-bt
 > the console to show you the instructions for bootstrapping
 > the node. Following the instructions in the console output
 > to connect to the interactive installer:
-
