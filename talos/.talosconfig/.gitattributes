@@ -1,0 +1,2 @@
+*.yaml filter=git-crypt diff=git-crypt
+talosconfig filter=git-crypt diff=git-crypt
