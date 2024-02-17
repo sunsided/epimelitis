@@ -5,4 +5,5 @@ kind: Kustomization
 resources:
   - local-path-provisioner
   - metallb
+  - nginx-ingress
   - home-assistant
