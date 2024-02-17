@@ -1,0 +1,27 @@
+---
+# See https://pre-commit.com/
+repos:
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      # - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/thlorenz/doctoc
+    rev: v2.2.0
+    hooks:
+      - name: Generate Markdown Table of Contents
+        id: doctoc
+        args:
+          - --github
+          - --update-only
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform.git
+    rev: v1.86.0
+    hooks:
+      - name: Format Terraform files
+        id: terraform_fmt
+        args:
+          - .

@@ -11,8 +11,8 @@ terraform {
   }
 
   backend "gcs" {
-    bucket  = "terraform.widemeadows.de"
-    prefix  = "state/epimelitis"
+    bucket = "terraform.widemeadows.de"
+    prefix = "state/epimelitis"
   }
 }
 
@@ -25,17 +25,17 @@ provider "libvirt" {
 # from the outside, so we bridge it with the pre-configured bridge net.
 resource "libvirt_network" "talos" {
   # The name used by libvirt
-  name = "${var.libvirt_k8s_bridge_network}"
+  name = var.libvirt_k8s_bridge_network
 
   # Use a pre-existing host bridge. The guests will effectively be directly
   # connected to the physical network (i.e. their IP addresses will all be on
   # the subnet of the physical network, and there will be no restrictions on
   # inbound or outbound connections).
   mode   = "bridge"
-  bridge = "${var.raspberry_pi_bridge_network}"
+  bridge = var.raspberry_pi_bridge_network
 
   # List of subnets the addresses allowed for domains connected
-  addresses = [ "10.17.3.0/24", "2001:db8:ca2:2::1/64" ]
+  addresses = ["10.17.3.0/24", "2001:db8:ca2:2::1/64"]
 
   # Start the network on host boot up
   autostart = true
@@ -44,15 +44,15 @@ resource "libvirt_network" "talos" {
 # BUG: If bringing up the domain fails, enter `virsh` and run `list --all`.
 #      The `talos` domain should show up. Remove it with `undefine talos`.
 resource "libvirt_domain" "talos" {
-  type        = "kvm"
-  name        = "talos"
-  memory      = "7680"
-  vcpu        = 4
+  type   = "kvm"
+  name   = "talos"
+  memory = "7680"
+  vcpu   = 4
 
-  firmware    = "/usr/share/qemu/edk2-aarch64-code.fd"
+  firmware = "/usr/share/qemu/edk2-aarch64-code.fd"
   nvram { # forces replacement
-    file      = "/var/lib/libvirt/qemu/nvram/talos_VARS.fd"
-    template  = "/usr/share/qemu/edk2-arm-vars.fd"
+    file     = "/var/lib/libvirt/qemu/nvram/talos_VARS.fd"
+    template = "/usr/share/qemu/edk2-arm-vars.fd"
   }
 
 
@@ -79,7 +79,7 @@ resource "libvirt_domain" "talos" {
   }
 
   boot_device {
-    dev = [ "cdrom", "hd" ]
+    dev = ["cdrom", "hd"]
   }
 
   # IMPORTANT: this is a known bug on cloud images, since they expect a console
@@ -118,7 +118,7 @@ resource "libvirt_volume" "talos-state" {
 resource "libvirt_volume" "metal" {
   name   = "talos-metal-arm"
   source = "/tmp/metal-arm64.qcow2"
-  pool = libvirt_pool.talos.name
+  pool   = libvirt_pool.talos.name
 }
 
 resource "libvirt_pool" "talos" {

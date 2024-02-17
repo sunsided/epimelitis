@@ -7,6 +7,32 @@
 For this experiment I'll be using a Raspberry Pi 5
 with a 256 GB microSD card (class A2).
 
+## Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [1. Setting up Alpine Linux as the Hypervisor OS](#1-setting-up-alpine-linux-as-the-hypervisor-os)
+  - [Getting Alpine](#getting-alpine)
+  - [Configuring Alpine](#configuring-alpine)
+  - [Enable the community repository](#enable-the-community-repository)
+  - [Become a Hypervisor: Installing KVM / Qemu / libvirt](#become-a-hypervisor-installing-kvm--qemu--libvirt)
+  - [Enable automatic suspension and restart of Guests](#enable-automatic-suspension-and-restart-of-guests)
+- [2. Provision Talos Linux](#2-provision-talos-linux)
+  - [Download the `metal-arm64` image and convert it to qcow2](#download-the-metal-arm64-image-and-convert-it-to-qcow2)
+  - [Run OpenTofu / Terraform to create the Talos Linux guest](#run-opentofu--terraform-to-create-the-talos-linux-guest)
+  - [Connect to the Talos VM](#connect-to-the-talos-vm)
+- [3. Getting `talosctl`](#3-getting-talosctl)
+- [100. Setting up Talos Linux](#100-setting-up-talos-linux)
+  - [Updating the EEPROM](#updating-the-eeprom)
+  - [Downloading the Talos Linux image](#downloading-the-talos-linux-image)
+  - [Writing the Talos Linux image to the SD card](#writing-the-talos-linux-image-to-the-sd-card)
+  - [Fixing `boot.txt`](#fixing-boottxt)
+  - [Bootstrapping the Node](#bootstrapping-the-node)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
 ## 1. Setting up Alpine Linux as the Hypervisor OS
 
 ### Getting Alpine
@@ -189,6 +215,7 @@ qemu-img convert -O qcow2 metal-arm64.iso metal-arm64.qcow2
 
 ```shell
 tofu apply
+# or terraform apply
 ```
 
 ### Connect to the Talos VM
