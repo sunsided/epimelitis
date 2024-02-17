@@ -4,8 +4,22 @@
 >
 > one who takes care of a thing, in an official capacity; a curator, an editor, (law) a caretaker or guardian
 
-For this experiment I'll be using a Raspberry Pi 5
-with a 256 GB microSD card (class A2).
+For this experiment I'll be using a Raspberry Pi 5 with a 256 GB microSD card (class A2).
+
+## What if ...
+
+- We run **Home Assistant**
+- ... but in a **Container**
+- ... that runs on **Kubernetes**
+- ... inside a Kernel-based **Virtual Machine**
+- ... that runs on **Alpine Linux**
+- ... on a **Raspberry Pi**
+
+Okay, here me out:
+
+<div align="center"/>
+    <img alt="Crazy Guy suggesting Kubernetes" src="docs/images/aliens.jpg">
+</div>
 
 ## Table of Contents
 
