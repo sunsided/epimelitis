@@ -1,0 +1,8 @@
+# https://metallb.universe.tf/configuration/
+# https://metallb.universe.tf/configuration/_advanced_ipaddresspool_configuration/
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: l2
+  namespace: metallb-system
