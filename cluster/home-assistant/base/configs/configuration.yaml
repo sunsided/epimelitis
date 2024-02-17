@@ -11,7 +11,7 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 homeassistant:
-  name: MyHome
+  name: My Home
   temperature_unit: C
   unit_system: metric
   latitude: !secret home_latitude
@@ -21,3 +21,11 @@ homeassistant:
 
 sun:
 system_health:
+
+http:
+  ip_ban_enabled: false
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - "10.244.0.0/16"  # pod subnet
+    - "10.96.0.0/12"   # service subnet
