@@ -1,0 +1,67 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: pihole
+
+# helm repo add mojo2600 https://mojo2600.github.io/pihole-kubernetes/
+# helm repo update
+# helm search repo mojo2600
+# helm show values mojo2600/pihole >> values.yaml
+
+helmCharts:
+  - name: pihole
+    releaseName: pihole
+    repo: https://mojo2600.github.io/pihole-kubernetes/
+    version: 2.22.0
+    includeCRDs: true
+    valuesInline:
+      privileged: "true"
+
+      dualStack:
+        enabled: false  # due to bridged networking
+
+      persistentVolumeClaim:
+        enabled: true
+        storageClass: "local-path"
+
+      extraEnvVars:
+        TZ: "Europe/Berlin"
+
+      admin:
+        enabled: true
+        existingSecret: ""
+        passwordKey: "password"
+
+      dnsHostPort:
+        enabled: true
+
+      serviceDns:
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: 10.30.200.1
+          metallb.universe.tf/address-pool: static
+          metallb.universe.tf/allow-shared-ip: pihole-svc
+
+      serviceDhcp:
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: 10.30.200.1
+          metallb.universe.tf/address-pool: static
+          metallb.universe.tf/allow-shared-ip: pihole-svc
+
+      serviceWeb:
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: 10.30.200.1
+          metallb.universe.tf/address-pool: static
+          metallb.universe.tf/allow-shared-ip: pihole-svc
+        http:
+          enabled: true
+        https:
+          enabled: true
+
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - pi.hole
+          - pi-hole.home
+          - pi-hole.fritz.box
