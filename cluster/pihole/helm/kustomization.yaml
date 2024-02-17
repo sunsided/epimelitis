@@ -64,4 +64,6 @@ helmCharts:
         hosts:
           - pi.hole
           - pi-hole.home
+          - pi.hole.home
           - pi-hole.fritz.box
+          - pi.hole.fritz.box
