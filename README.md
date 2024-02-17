@@ -4,7 +4,10 @@
 >
 > one who takes care of a thing, in an official capacity; a curator, an editor, (law) a caretaker or guardian
 
-For this experiment I'll be using a Raspberry Pi 5 with a 256 GB microSD card (class A2).
+<div align="center"/>
+    <img alt="A raging raspberry carrying a shipload of lightbulbs and hardware" src="docs/images/raspberry-rage.jpg">
+</div>
+
 
 ## What if ...
 
@@ -20,6 +23,8 @@ Okay, here me out:
 <div align="center"/>
     <img alt="Crazy Guy suggesting Kubernetes" src="docs/images/aliens.jpg">
 </div>
+
+For this experiment I'll be using a Raspberry Pi 5 with a 256 GB microSD card (class A2).
 
 ## Table of Contents
 
