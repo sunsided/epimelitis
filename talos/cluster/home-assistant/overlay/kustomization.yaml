@@ -2,16 +2,19 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+namespace: home-assistant
+
 resources:
   - ../base
 
 configMapGenerator:
   - name: home-assistant-config
+    namespace: home-assistant
     behavior: replace
     literals:
-    - TZ="Europe/Berlin"
+      - TZ="Europe/Berlin"
 
-patchesJson6902:
+patches:
   - target:
       version: v1
       kind: Ingress
@@ -20,15 +23,15 @@ patchesJson6902:
       - op: replace
         path: /spec/ingressClassName
         value: nginx
-      - op: replace
-        path: /spec/tls/0/hosts/0
-        value: example.com
-      - op: replace
-        path: /spec/tls/0/secretName
-        value: example.com-production-secret
-      - op: replace
-        path: /spec/rules/0/host
-        value: example.com
+#      - op: replace
+#        path: /spec/tls/0/hosts/0
+#        value: home-assistant.fritz.box
+#      - op: replace
+#        path: /spec/tls/0/secretName
+#        value: example.com-production-secret
+#      - op: replace
+#        path: /spec/rules/0/host
+#        value: example.com
 
 images:
   - name: ghcr.io/home-assistant/home-assistant
