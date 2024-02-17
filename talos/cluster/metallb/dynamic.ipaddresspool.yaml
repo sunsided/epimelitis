@@ -3,8 +3,8 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: default
+  name: dynamic
   namespace: metallb-system
 spec:
   addresses:
-    - 10.30.200.1-10.30.200.250
+    - 10.30.200.50-10.30.200.250
