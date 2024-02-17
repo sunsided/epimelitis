@@ -1,7 +1,0 @@
----
-namespace: home-assistant
-
-resources:
-  - namespace.yaml
-  - mem-limit.yaml
-  - deployment.yaml

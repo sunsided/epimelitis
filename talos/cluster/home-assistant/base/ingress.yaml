@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: home-assistant
+  annotations:
+  #  kubernetes.io/ingress.class: "nginx"
+  #  cert-manager.io/cluster-issuer: cert-manager-webhook-duckdns-production
+spec:
+  ingressClassName: nginx
+  # tls:
+  #   - hosts:
+  #       - "home-assistant.fritz.box"
+  #     secretName: "replace-me"
+  rules:
+    - host: "home-assistant.fritz.box"
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: home-assistant
+              port:
+                name: "http"

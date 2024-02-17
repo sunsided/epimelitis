@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   labels:
     app: home-assistant
+    version: "2024.2.2"
   name: home-assistant
   namespace: home-assistant
 spec:
@@ -18,16 +19,20 @@ spec:
     metadata:
       labels:
         app: home-assistant
+        version: "2024.2.2"
     spec:
-#      securityContext:
-#        fsGroup: 33
-#        fsGroupChangePolicy: "OnRootMismatch"
       containers:
-      - name: home-assistant-app
-        image: "ghcr.io/home-assistant/home-assistant:2022.12.1"
+      - name: app
+        image: "ghcr.io/home-assistant/home-assistant:2024.2"
         imagePullPolicy: IfNotPresent
         securityContext:
-          privileged: null
+          allowPrivilegeEscalation: false
+          runAsNonRoot: false
+          capabilities:
+            drop:
+              - ALL
+          seccompProfile:
+            type: RuntimeDefault
         envFrom:
           - configMapRef:
               name: home-assistant-config
@@ -36,26 +41,29 @@ spec:
             containerPort: 8123
             protocol: TCP
         resources:
-            limits:
-                cpu: 4
-                memory: 4Gi
+          limits:
+            cpu: 2
+            memory: 2Gi
+          requests:
+            cpu: 500m
+            memory: 512Mi
         livenessProbe:
           tcpSocket:
-            port: 8123
+            port: http
           initialDelaySeconds: 0
           failureThreshold: 3
           timeoutSeconds: 1
           periodSeconds: 10
         readinessProbe:
           tcpSocket:
-            port: 8123
+            port: http
           initialDelaySeconds: 0
           failureThreshold: 3
           timeoutSeconds: 1
           periodSeconds: 10
         startupProbe:
           tcpSocket:
-            port: 8123
+            port: http
           initialDelaySeconds: 0
           failureThreshold: 30
           timeoutSeconds: 1
