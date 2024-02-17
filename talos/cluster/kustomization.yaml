@@ -6,6 +6,6 @@ resources:
   - local-path-provisioner
   - metallb
   - nginx-ingress
-  - pi-hole
+  - pihole
   - mosquitto
   - home-assistant
