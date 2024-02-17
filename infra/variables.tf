@@ -1,3 +1,9 @@
+variable "talos-iso-url" {
+  description = "The URL of the Talos Linux Metal image"
+  type        = string
+  default     = "https://github.com/siderolabs/talos/releases/download/v1.6.4/metal-arm64.iso"
+}
+
 variable "raspberry_pi_host" {
   description = "The IP address or host name of the Raspberry Pi"
   type        = string

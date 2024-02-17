@@ -72,7 +72,7 @@ Enable the `http://alpine.sakamoto.pl/alpine/v3.19/community` rpo.
 ```shell
 apk add \
     libvirt-daemon libvirt-client \
-    qemu-img qemu-system-aarch64 qemu-modules \
+    qemu-img qemu-system-arm qemu-system-aarch64 qemu-modules \
     openrc
 rc-update add libvirtd
 ```
@@ -176,7 +176,61 @@ service sshd restart
 rc-update add libvirt-guests
 ```
 
-## 2. Getting `talosctl`
+## 2. Provision Talos Linux
+
+### Download the `metal-arm64` image and convert it to qcow2
+
+```shell
+curl -LO https://github.com/siderolabs/talos/releases/download/v1.6.4/metal-arm64.iso
+qemu-img convert -O qcow2 metal-arm64.iso metal-arm64.qcow2
+```
+
+### Run OpenTofu / Terraform to create the Talos Linux guest
+
+```shell
+tofu apply
+```
+
+### Connect to the Talos VM
+
+```shell
+virsh connect talos
+```
+
+In the UEFI shell, type `exit`. You will be brought to the
+UEFI, where you select the `Boot Manager`. Pick the third
+disk from the list and boot from there - you'll see Talos Linux' boot menu now:
+
+```
+                GNU GRUB  version 2.06
+
+ /------------------------------------------------\
+ |*Talos ISO                                      |
+ | Reset Talos installation                       |
+ |                                                |
+ \------------------------------------------------/
+```
+
+Boot Talos. Say hi. It'll greet you with
+
+```plain
+[    9.851478] [talos] entering maintenance service {"component": "controller-runtime", "controller": "config.AcquireController"}
+[    9.854129] [talos] this machine is reachable at: {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.855517] [talos]  10.22.27.56 {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.856546] [talos]  2001:9e8:17ba:2200:5054:ff:feba:99ef {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.858176] [talos] server certificate issued {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController", "fingerprint": "rMWhs9V9Y30sbs9W5KNCgVRReKGrfvV0FwMtqEX4OW8="}
+[    9.860209] [talos] upload configuration using talosctl: {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.862119] [talos]  talosctl apply-config --insecure --nodes 10.22.27.56 --file <config.yaml> {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.863452] [talos] or apply configuration using talosctl interactive installer: {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.864784] [talos]  talosctl apply-config --insecure --nodes 10.22.27.56 --mode=interactive {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.866219] [talos] optionally with node fingerprint check: {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+[    9.867265] [talos]  talosctl apply-config --insecure --nodes 10.22.27.56 --cert-fingerprint 'rMWhs9V9Y30sbs9W5KNCgVRReKGrfvV0FwMtqEX4OW8=' --file <config.yaml> {"component": "controller-runtime", "controller": "runtime.MaintenanceServiceController"}
+```
+
+You may now probably want to tell your router to always assign
+this IP address to that new device on your network.
+
+## 3. Getting `talosctl`
 
 ```shell
 curl -sL https://talos.dev/install | sh
