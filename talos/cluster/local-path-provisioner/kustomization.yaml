@@ -1,0 +1,43 @@
+# See https://github.com/rancher/local-path-provisioner
+---
+resources:
+  - https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.26/deploy/local-path-storage.yaml
+
+patches:
+  - patch: |-
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: local-path-storage
+        labels:
+          pod-security.kubernetes.io/enforce: privileged
+          pod-security.kubernetes.io/warn: privileged
+          pod-security.kubernetes.io/audit: privileged
+
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: local-path-provisioner
+        namespace: local-path-storage
+      spec:
+        template:
+          spec:
+            containers:
+            - name: local-path-provisioner
+              securityContext:
+                allowPrivilegeEscalation: false
+                runAsNonRoot: false
+                capabilities:
+                  drop:
+                  - ALL
+                seccompProfile:
+                  type: RuntimeDefault
+
+  - patch: |-
+      apiVersion: storage.k8s.io/v1
+      kind: StorageClass
+      metadata:
+        name: local-path
+        annotations:
+          storageclass.kubernetes.io/is-default-class: true

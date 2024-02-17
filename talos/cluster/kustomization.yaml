@@ -1,0 +1,4 @@
+---
+resources:
+  - local-path-provisioner
+  - home-assistant

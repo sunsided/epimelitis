@@ -1,3 +1,12 @@
+![Home Assistant](https://img.shields.io/badge/home_assistant-2024.2-blue?logo=home-assistant)
+![Raspberry Pi](https://img.shields.io/badge/raspberry_pi-5-blue?logo=raspberrypi)
+![Kubernetes](https://img.shields.io/badge/kubernetes-1.29-blue?logo=kubernetes)
+![Talos Linux](https://img.shields.io/badge/talos_linux-1.64-blue?logo=linux)
+![Alpine Linux](https://img.shields.io/badge/alpine_linux-3.19-blue?logo=alpine-linux)
+![libvirt](https://img.shields.io/badge/libvirt-9.10-blue?logo=qemu)
+![OpenTofu](https://img.shields.io/badge/opentofu-1.6-blue?logo=opentofu)
+![YAML](https://img.shields.io/badge/YAML-now_30%25_more-blue?logo=yaml)
+
 # Επιμελητής
 
 > **επιμελητής** **•** (epimelitís) _m_ (_plural_ **επιμελητές**, _feminine_ **επιμελήτρια**)
@@ -18,13 +27,13 @@
 - ... that runs on **Alpine Linux**
 - ... on a **Raspberry Pi**
 
-Okay, here me out:
+For this experiment I'll be using a Raspberry Pi 5 with a 256 GB class A2 microSD card (it was cheap).
+
+Okay, hear me out:
 
 <div align="center"/>
     <img alt="Crazy Guy suggesting Kubernetes" src="docs/images/aliens.jpg">
 </div>
-
-For this experiment I'll be using a Raspberry Pi 5 with a 256 GB microSD card (class A2).
 
 ## Table of Contents
 
