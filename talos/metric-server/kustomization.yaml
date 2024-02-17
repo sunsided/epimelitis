@@ -1,0 +1,28 @@
+resources:
+  - https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+patches:
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: metrics-server
+      namespace: kube-system
+    spec:
+      template:
+        spec:
+          containers:
+            - name: metrics-server
+              # Note: As `args` is an array `$patch` won't work on it.
+              args:
+                - --cert-dir=/tmp
+                - --secure-port=10250
+                - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+                - --kubelet-use-node-status-port
+                - --metric-resolution=15s
+                - --kubelet-insecure-tls=true
+              ports:
+                - $patch: replace
+                - containerPort: 10250
+                  name: https
+                  protocol: TCP

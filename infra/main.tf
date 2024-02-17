@@ -96,11 +96,12 @@ resource "libvirt_domain" "talos" {
     target_type = "virtio"
     target_port = "1"
   }
+}
 
-  # Make the ISO image non-IDE
-  xml {
-    xslt = file("cdrom-model.xsl")
-  }
+resource "libvirt_volume" "metal" {
+  name   = "talos-metal-arm"
+  source = "/tmp/metal-arm64.qcow2"
+  pool   = libvirt_pool.talos.name
 }
 
 resource "libvirt_volume" "talos-system" {
@@ -113,12 +114,6 @@ resource "libvirt_volume" "talos-state" {
   name = "talos-state.qcow2"
   size = 100 * 1024 * 1024 * 1024
   pool = libvirt_pool.talos.name
-}
-
-resource "libvirt_volume" "metal" {
-  name   = "talos-metal-arm"
-  source = "/tmp/metal-arm64.qcow2"
-  pool   = libvirt_pool.talos.name
 }
 
 resource "libvirt_pool" "talos" {
