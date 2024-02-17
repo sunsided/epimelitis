@@ -6,4 +6,5 @@ resources:
   - local-path-provisioner
   - metallb
   - nginx-ingress
+  - mosquitto
   - home-assistant
