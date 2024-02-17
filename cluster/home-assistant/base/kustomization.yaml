@@ -25,3 +25,15 @@ configMapGenerator:
     namespace: home-assistant
     literals:
       - TZ="UTC"
+  - name: home-assistant-config-files
+    namespace: home-assistant
+    files:
+      - configs/configuration.yaml
+      - configs/scenes.yaml
+      - configs/scripts.yaml
+      - configs/automations.yaml
+
+secretGenerator:
+- name: home-assistant-secrets
+  files:
+    - configs/secrets.yaml
