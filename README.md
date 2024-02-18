@@ -146,6 +146,13 @@ Add the scripts that will create bridges off `/etc/network/interfaces`:
 apk add bridge
 ```
 
+Add the network bridge:
+
+```shell
+brctl addbr brlan
+brctl addif brlan eth0
+```
+
 Change your `/etc/network/interfaces` to
 
 - disable `dhcp` on your `eth0`
@@ -169,14 +176,15 @@ auto wlan0
 iface wlan0 inet dhcp
 ```
 
-For more information, see [Bridge].
+For more information, see [Bridge] and [Bridging for Qemu] (this one is important).
 
 [Bridge]: https://wiki.alpinelinux.org/wiki/Bridge
+[Bridging for Qemu]: https://wiki.alpinelinux.org/wiki/Bridge#Bridging_for_QEMU
 
 To restart the networking stack, run
 
 ```shell
-service network restart
+service networking restart
 ```
 
 If it fails, reconnect your keyboard ...
