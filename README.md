@@ -417,7 +417,7 @@ Therefore and lastly,
 
 - [Mosquitto] is our MQTT Broker for Smart Home appliances. I re-soldered and flashed
   some Sonoff Slampher E27 sockets with Tasmota, and they'll talk to Mosquitto.
-- [Home Assistant] itself. It'll be reachable as `http:/home-assistant.home`.
+- [Home Assistant] itself. It'll be reachable as `http://home-assistant.home`.
 
 Home Assistant is deployed using a `LoadBalancer` on the home network in order for
 it to pick up UDP packets in that subnet.
