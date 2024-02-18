@@ -1,8 +1,8 @@
 cluster:
     allowSchedulingOnControlPlanes: true
     extraManifests:
-        - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/main/deploy/standalone-install.yaml
-        - https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+        - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/v0.8.0/deploy/standalone-install.yaml
+        - https://github.com/kubernetes-sigs/metrics-server/releases/v0.7.0/download/components.yaml
 machine:
     network:
         hostname: talos-epimelitis.fritz.box

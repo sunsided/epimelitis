@@ -367,7 +367,7 @@ kubectl -k metric-server
 
 ## 3. The part where we use Kubernetes
 
-Change into the [`cluster/`](talos/) directory and appy the kustomizations, or:
+Change into the [`cluster/`](cluster/) directory and appy the kustomizations, or:
 
 ```shell
 kubectl kustomize --enable-helm cluster | kubectl apply -f -
@@ -387,6 +387,17 @@ With this setup we could deploy our workloads, have them persisted and make them
 externally available (give or take a static route setup on your home network's Router).
 When requests come in over the network bridge, MetalLB takes care of routing them
 to the correct workload.
+
+Note that by virtue of our Talos setup we already have
+
+- [Kubelet Serving Cert Approver] for accepting certificate signing requests for system components, and
+- [Kubernetes Metrics Server] for node and pod metrics.
+
+Due to some timeout related issues the already installed Metrics Server will be
+patched with a slightly more relaxed one.
+
+[Kube Serving Cert Approver]: https://github.com/alex1989hu/kubelet-serving-cert-approver
+[Kubernetes Metrics Server]: https://github.com/kubernetes-sigs/metrics-server
 
 ### Improved DNS
 
