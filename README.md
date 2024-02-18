@@ -51,6 +51,10 @@ Okay, hear me out:
   - [Run OpenTofu / Terraform to create the Talos Linux guest](#run-opentofu--terraform-to-create-the-talos-linux-guest)
   - [Connect to the Talos VM](#connect-to-the-talos-vm)
   - [Configuring and Bootstrapping Talos](#configuring-and-bootstrapping-talos)
+- [The Kubernetes Part](#the-kubernetes-part)
+  - [Storage, Ingress, Load balancing](#storage-ingress-load-balancing)
+  - [Improved DNS](#improved-dns)
+  - [Home Assistant and Sensors](#home-assistant-and-sensors)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -360,3 +364,57 @@ Then apply a patch for the metric server to avoid timeout related issues:
 ```shell
 kubectl -k metric-server
 ```
+
+## The Kubernetes Part
+
+Change into the [`cluster/`](talos/) directory and appy the kustomizations, or:
+
+```shell
+kubectl kustomize --enable-helm cluster | kubectl apply -f -
+```
+
+Note that you'll need `kubectl kustomize` due to Helm. As of writing this, `kubectl apply -k` will not do.
+
+### Storage, Ingress, Load balancing
+
+The system foundation consists of these parts:
+
+- [Local Path Provisioner] serves our `PersistentVolumeClaims` from the SD card
+- [MetalLB] assignes IP addresses to Load Balancers, both in our home network and in a dedicated one.
+- [Nginx Ingress Controller] handles the `Ingress` resources
+
+With this setup we could deploy our workloads, have them persisted and make them
+externally available (give or take a static route setup on your home network's Router).
+When requests come in over the network bridge, MetalLB takes care of routing them
+to the correct workload.
+
+### Improved DNS
+
+We can do one better:
+
+- [Pi-Hole] is used as a DNS Server (and it _also_ filters Ads). With the power of MetalLB
+  we give it an address in our home network.
+- [ExternalDNS] announces Ingress host names to an external DNS - in this case, Pi-Hole.  It'll then be reachable as `http://pi-hole.home`.
+
+With this, all we need to do is tell our Router to use our Pi-Hole as a DNS server.
+Whatever Ingress we deploy now, ExternalDNS will announce it to Pi-Hole and thus
+every device on our home network can access the Kubernetes-run workload by name.
+
+### Home Assistant and Sensors
+
+Therefore and lastly,
+
+- [Mosquitto] is our MQTT Broker for Smart Home appliances. I re-soldered and flashed
+  some Sonoff Slampher E27 sockets with Tasmota, and they'll talk to Mosquitto.
+- [Home Assistant] itself. It'll be reachable as `http:/home-assistant.home`.
+
+Home Assistant is deployed using a `LoadBalancer` on the home network in order for
+it to pick up UDP packets in that subnet.
+
+[Local Path Provisioner]: https://github.com/rancher/local-path-provisioner
+[MetalLB]: https://metallb.universe.tf/
+[Nginx Ingress Controller]: https://github.com/kubernetes/ingress-nginx
+[Pi-Hole]: https://pi-hole.net/
+[ExternalDNS]: https://github.com/kubernetes-sigs/external-dns
+[Mosquitto]: https://mosquitto.org/
+[Home Assistant]: https://www.home-assistant.io/
