@@ -15,6 +15,8 @@ spec:
       labels:
         app: mosquitto
     spec:
+      securityContext:
+        fsGroup: 1883
       containers:
       - name: app
         # https://hub.docker.com/_/eclipse-mosquitto
@@ -32,6 +34,9 @@ spec:
             name: config
           - mountPath: /mosquitto/data/
             name: data
+          - mountPath: /etc/mosquitto/conf.d/pwfile
+            name: users
+            subPath: pwfile
           # - mountPath: /mosquitto/certs/
           #   name: certs
         resources:
@@ -54,6 +59,9 @@ spec:
         - name: config
           configMap:
             name: mosquitto-config
+        - name: users
+          secret:
+            secretName: mosquitto-users
         # - name: certs
         #   secret:
         #     secretName: mosquitto-certs

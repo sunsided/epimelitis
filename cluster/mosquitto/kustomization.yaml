@@ -24,3 +24,9 @@ configMapGenerator:
     namespace: mosquitto
     files:
       - mosquitto.conf
+
+secretGenerator:
+  - name: mosquitto-users
+    namespace: mosquitto
+    files:
+      - secrets/pwfile

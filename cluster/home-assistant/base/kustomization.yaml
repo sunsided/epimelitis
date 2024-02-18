@@ -13,7 +13,7 @@ resources:
   - mem-limit.yaml
   - persistent-volume-claim.yaml
   - deployment.yaml
-  - service.yaml
+  - services.yaml
   - ingress.yaml
 
 commonLabels:

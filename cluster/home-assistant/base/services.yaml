@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: home-assistant
+  name: home-assistant
+  namespace: home-assistant
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8123
+      targetPort: http
+      protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: home-assistant
+  name: home-assistant-udp
+  namespace: home-assistant
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 10.22.27.250   # use "sudo nmap -sU -v 10.22.27.250" to run a port scan
+    metallb.universe.tf/allow-shared-ip: home-assistant
+spec:
+  type: LoadBalancer
+  ports:
+    - name: udp-ssdp
+      port: 1900
+      targetPort: udp-ssdp
+      protocol: UDP
+    - name: udp-mdns
+      port: 5353
+      targetPort: udp-mdns
+      protocol: UDP
+    - name: udp-unicast
+      port: 5683
+      targetPort: udp-unicast
+      protocol: UDP
+    - name: udp-homekit
+      port: 51827
+      targetPort: udp-homekit
+      protocol: UDP
