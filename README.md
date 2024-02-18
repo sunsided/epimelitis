@@ -316,17 +316,43 @@ DEV        MODEL   SERIAL   TYPE   UUID   WWID   MODALIAS                    NAM
 /dev/vdc   -       -        HDD    -      -      virtio:d00000002v00001AF4   -      124 MB   /pci0000:00/0000:00:01.4/0000:05:00.0/virtio4/   /sys/class/block
 ```
 
+Do have a look at the [Local Path Provisioner] configuration mentioned in the Talos Linux documentation if you want to extend your storage.
+
 Change into the [`talos/`](talos/) directory and run the `talosctl gen config` command. Make sure to use the proper disk, here `/dev/vda`:
 
 ```shell
 talosctl gen config "talos-epimelitis" https://talos-epimelitis.fritz.box:6443 \
     --additional-sans=talos-epimelitis.fritz.box \
     --additional-sans=talos-epimelitis \
-    --additional-sans=10.22.27.59 \
+    --additional-sans=10.22.27.71 \
     --install-disk=/dev/vda \
     --output-dir=.talosconfig \
     --output-types=controlplane,talosconfig \
     --config-patch=@cp-patch.yaml
+```
+
+Edit the created `.talosconfig/controlplane.yaml` in an editor and add the storage volume (as shown above):
+
+```yaml
+machine:
+  # ...
+
+  kubelet:
+    extraMounts:
+    - destination: /var/mnt/storage
+        type: bind
+        source: /var/mnt/storage
+        options:
+        - bind
+        - rshared
+        - rw
+
+  # ...
+
+  disks:
+    - device: /dev/vdb
+      partitions:
+        - mountpoint: /var/mnt/storage
 ```
 
 Update your talosconfig with the correct endpoint:
@@ -364,6 +390,8 @@ Then apply a patch for the metric server to avoid timeout related issues:
 ```shell
 kubectl -k metric-server
 ```
+
+[Local Path Provisioner]: https://www.talos.dev/v1.6/kubernetes-guides/configuration/local-storage/#local-path-provisioner
 
 ## 3. The part where we use Kubernetes
 
