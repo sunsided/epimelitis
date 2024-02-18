@@ -7,6 +7,23 @@ resources:
   - https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.26/deploy/local-path-storage.yaml
 
 patches:
+  # See https://www.talos.dev/v1.6/kubernetes-guides/configuration/local-storage/
+  - patch: |-
+      kind: ConfigMap
+      apiVersion: v1
+      metadata:
+        name: local-path-config
+        namespace: local-path-storage
+      data:
+        config.json: |-
+          {
+            "nodePathMap":[
+            {
+              "node":"DEFAULT_PATH_FOR_NON_LISTED_NODES",
+              "paths":["/var/local-path-provisioner"]
+            }
+            ]
+          }
   - patch: |-
       apiVersion: v1
       kind: Namespace
