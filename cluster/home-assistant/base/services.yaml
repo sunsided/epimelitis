@@ -23,7 +23,7 @@ metadata:
   namespace: home-assistant
   annotations:
     metallb.universe.tf/loadBalancerIPs: 10.22.27.250   # use "sudo nmap -sU -v 10.22.27.250" to run a port scan
-    metallb.universe.tf/allow-shared-ip: home-assistant
+    metallb.universe.tf/allow-shared-ip: home-net
 spec:
   type: LoadBalancer
   ports:

@@ -38,21 +38,23 @@ helmCharts:
 
       serviceDns:
         annotations:
-          metallb.universe.tf/loadBalancerIPs: 10.30.200.1
-          metallb.universe.tf/address-pool: static
-          metallb.universe.tf/allow-shared-ip: pihole-svc
+          metallb.universe.tf/loadBalancerIPs: 10.22.27.250
+          # metallb.universe.tf/address-pool: home
+          metallb.universe.tf/allow-shared-ip: home-net
+        type: LoadBalancer
 
       serviceDhcp:
         annotations:
-          metallb.universe.tf/loadBalancerIPs: 10.30.200.1
-          metallb.universe.tf/address-pool: static
-          metallb.universe.tf/allow-shared-ip: pihole-svc
+          metallb.universe.tf/loadBalancerIPs: 10.22.27.250
+          # metallb.universe.tf/address-pool: home
+          metallb.universe.tf/allow-shared-ip: home-net
+        type: LoadBalancer
 
       serviceWeb:
         annotations:
-          metallb.universe.tf/loadBalancerIPs: 10.30.200.1
-          metallb.universe.tf/address-pool: static
-          metallb.universe.tf/allow-shared-ip: pihole-svc
+          metallb.universe.tf/loadBalancerIPs: 10.22.27.250
+          # metallb.universe.tf/address-pool: home
+          metallb.universe.tf/allow-shared-ip: home-net
         http:
           enabled: true
         https:
