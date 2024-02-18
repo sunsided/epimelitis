@@ -51,7 +51,7 @@ Okay, hear me out:
   - [Run OpenTofu / Terraform to create the Talos Linux guest](#run-opentofu--terraform-to-create-the-talos-linux-guest)
   - [Connect to the Talos VM](#connect-to-the-talos-vm)
   - [Configuring and Bootstrapping Talos](#configuring-and-bootstrapping-talos)
-- [The Kubernetes Part](#the-kubernetes-part)
+- [3. The part where we use Kubernetes](#3-the-part-where-we-use-kubernetes)
   - [Storage, Ingress, Load balancing](#storage-ingress-load-balancing)
   - [Improved DNS](#improved-dns)
   - [Home Assistant and Sensors](#home-assistant-and-sensors)
@@ -365,7 +365,7 @@ Then apply a patch for the metric server to avoid timeout related issues:
 kubectl -k metric-server
 ```
 
-## The Kubernetes Part
+## 3. The part where we use Kubernetes
 
 Change into the [`cluster/`](talos/) directory and appy the kustomizations, or:
 
