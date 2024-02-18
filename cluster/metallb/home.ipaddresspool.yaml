@@ -1,0 +1,11 @@
+# https://metallb.universe.tf/configuration/
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: home
+  namespace: metallb-system
+spec:
+  addresses:
+    - 10.22.27.245-10.22.27.251
+  autoAssign: false

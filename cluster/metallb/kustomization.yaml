@@ -8,4 +8,5 @@ resources:
   - https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifests/metallb-native.yaml
   - static.ipaddresspool.yaml
   - dynamic.ipaddresspool.yaml
+  - home.ipaddresspool.yaml
   - l2advertisement.yaml
