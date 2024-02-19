@@ -354,6 +354,24 @@ machine:
         - mountpoint: /var/mnt/storage
 ```
 
+<details>
+<summary><b>💡 Show details ...</b></summary>
+
+<p>On subsequent boots after the first one, <c>talosctl dmesg</c> will print something like</p>
+
+<pre><code>
+talos-epimelitis.fritz.box: user: warning: [2024-02-19T20:45:36.936258652Z]: [talos] phase udevSetup (12/17): done, 1.516129ms
+talos-epimelitis.fritz.box: user: warning: [2024-02-19T20:45:36.936771652Z]: [talos] phase userDisks (13/17): 1 tasks(s)
+talos-epimelitis.fritz.box: user: warning: [2024-02-19T20:45:36.937193652Z]: [talos] task mountUserDisks (1/1): starting
+talos-epimelitis.fritz.box: user: warning: [2024-02-19T20:45:36.938507652Z]: [talos] task mountUserDisks (1/1): skipping setup of "/dev/vdb", found existing partitions
+talos-epimelitis.fritz.box: kern:  notice: [2024-02-19T20:45:36.940458652Z]: XFS (vdb1): Mounting V5 Filesystem
+talos-epimelitis.fritz.box: kern:    info: [2024-02-19T20:45:36.958119652Z]: XFS (vdb1): Ending clean mount
+talos-epimelitis.fritz.box: user: warning: [2024-02-19T20:45:36.959145652Z]: [talos] task mountUserDisks (1/1): done, 21.875926ms
+</code></pre>
+
+<p>... indicating the disk has been correctly set up.</p>
+</details>
+
 Update your talosconfig with the correct endpoint:
 
 ```shell
