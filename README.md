@@ -1,3 +1,5 @@
+# Επιμελητής
+
 ![Home Assistant](https://img.shields.io/badge/home_assistant-2024.2-blue?logo=home-assistant)
 ![Raspberry Pi](https://img.shields.io/badge/raspberry_pi-5-blue?logo=raspberrypi)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-1.29-blue?logo=kubernetes)
@@ -7,8 +9,6 @@
 ![OpenTofu](https://img.shields.io/badge/opentofu-1.6-blue?logo=opentofu)
 ![YAML](https://img.shields.io/badge/YAML-now_30%25_more-blue?logo=yaml)
 
-# Επιμελητής
-
 > **επιμελητής** **•** (epimelitís) _m_ (_plural_ **επιμελητές**, _feminine_ **επιμελήτρια**)
 >
 > one who takes care of a thing, in an official capacity; a curator, an editor, (law) a caretaker or guardian
@@ -16,7 +16,6 @@
 <div align="center"/>
     <img alt="A raging raspberry carrying a shipload of lightbulbs and hardware" src="docs/images/raspberry-rage.jpg">
 </div>
-
 
 ## What if ...
 
