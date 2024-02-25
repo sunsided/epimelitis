@@ -38,10 +38,7 @@ sonos:
       - !secret sonos_soundbar
       - !secret sonos_subwoofer
 
-#device_tracker:
-#  - platform: ping
-#    id: !secret bobcat_name
-#    hosts:
-#      sparrow: !secret bobcat_ip
-#    scan_interval: 60
-#    # name: !secret bobcat_name
+zha:
+  database_path: /config/zigbee.db
+  enable_quirks: true
+  # custom_quirks_path: /config/zhaquirks
