@@ -29,3 +29,11 @@ http:
   trusted_proxies:
     - "10.244.0.0/16"  # pod subnet
     - "10.96.0.0/12"   # service subnet
+
+sonos:
+  media_player:
+    advertise_addr: 10.22.27.251
+    hosts:
+      - !secret sonos_play_5
+      - !secret sonos_soundbar
+      - !secret sonos_subwoofer
