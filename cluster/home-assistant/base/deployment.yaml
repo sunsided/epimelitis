@@ -29,8 +29,10 @@ spec:
           allowPrivilegeEscalation: false
           runAsNonRoot: false
           capabilities:
-            drop:
-              - ALL
+            add:
+              - CAP_NET_RAW  # Fix https://github.com/home-assistant/core/issues/62188
+            # drop:
+            #   - ALL
           seccompProfile:
             type: RuntimeDefault
         envFrom:
