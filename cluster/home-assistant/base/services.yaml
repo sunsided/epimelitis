@@ -22,7 +22,7 @@ metadata:
   name: home-assistant-udp
   namespace: home-assistant
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 10.22.27.250   # use "sudo nmap -sU -v 10.22.27.250" to run a port scan
+    metallb.universe.tf/loadBalancerIPs: 10.22.27.251   # use "sudo nmap -sU -v 10.22.27.251" to run a port scan
     metallb.universe.tf/allow-shared-ip: home-net
 spec:
   type: LoadBalancer
@@ -30,6 +30,10 @@ spec:
     - name: udp-ssdp
       port: 1900
       targetPort: udp-ssdp
+      protocol: UDP
+    - name: udp-ssdp-2
+      port: 1901
+      targetPort: udp-ssdp-2
       protocol: UDP
     - name: udp-mdns
       port: 5353
@@ -43,3 +47,31 @@ spec:
       port: 51827
       targetPort: udp-homekit
       protocol: UDP
+    - name: udp-netbios-ns
+      port: 137
+      targetPort: udp-netbios-ns
+      protocol: UDP
+    - name: udp-netbios-dg
+      port: 138
+      targetPort: udp-netbios-dg
+      protocol: UDP
+    - name: udp-netbios-ss
+      port: 139
+      targetPort: udp-netbios-ss
+      protocol: UDP
+    - name: udp-printer
+      port: 515
+      targetPort: udp-printer
+      protocol: UDP
+    - name: udp-filemaker
+      port: 5003
+      targetPort: udp-filemaker
+      protocol: UDP
+    - name: tcp-sonos
+      port: 1400
+      targetPort: tcp-sonos
+      protocol: TCP
+    - name: tcp-sonos-announce
+      port: 1443
+      targetPort: tcp-sonos-tts
+      protocol: TCP

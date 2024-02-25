@@ -43,6 +43,9 @@ spec:
           - name: udp-ssdp
             containerPort: 1900
             protocol: UDP
+          - name: udp-ssdp-2
+            containerPort: 1901
+            protocol: UDP
           - name: udp-mdns
             containerPort: 5353
             protocol: UDP
@@ -52,6 +55,27 @@ spec:
           - name: udp-homekit
             containerPort: 51827
             protocol: UDP
+          - name: udp-netbios-ns
+            containerPort: 137
+            protocol: UDP
+          - name: udp-netbios-dg
+            containerPort: 138
+            protocol: UDP
+          - name: udp-netbios-ss
+            containerPort: 139
+            protocol: UDP
+          - name: udp-printer
+            containerPort: 515
+            protocol: UDP
+          - name: udp-filemaker
+            containerPort: 5003
+            protocol: UDP
+          - name: tcp-sonos
+            containerPort: 1400
+            protocol: TCP
+          - name: tcp-sonos-tts
+            containerPort: 1443
+            protocol: TCP
         resources:
           limits:
             cpu: 2
