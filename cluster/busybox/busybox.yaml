@@ -1,0 +1,23 @@
+# kubectl exec -it -n kube-system busybox-forever -- sh
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: busybox
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: busybox
+  template:
+    metadata:
+      labels:
+        name: busybox
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["sleep", "infinity"]
+        securityContext:
+          privileged: true
+          runAsUser: 0  # Running as root user
