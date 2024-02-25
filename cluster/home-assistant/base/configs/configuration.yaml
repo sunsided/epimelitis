@@ -38,8 +38,10 @@ sonos:
       - !secret sonos_soundbar
       - !secret sonos_subwoofer
 
-binary_sensor:
-  - platform: ping
-    host: !secret bobcat_ip
-    scan_interval: 60
-    name: !secret bobcat_name
+#device_tracker:
+#  - platform: ping
+#    id: !secret bobcat_name
+#    hosts:
+#      sparrow: !secret bobcat_ip
+#    scan_interval: 60
+#    # name: !secret bobcat_name
