@@ -26,7 +26,7 @@ spec:
         image: "ghcr.io/home-assistant/home-assistant:2024.2"
         imagePullPolicy: IfNotPresent
         securityContext:
-          allowPrivilegeEscalation: false
+          privileged: true
           runAsNonRoot: false
           capabilities:
             add:
@@ -124,6 +124,8 @@ spec:
           - name: home-assistant-secrets
             mountPath: /config/secrets.yaml
             subPath: secrets.yaml
+          - name: ttyusb0
+            mountPath: /dev/ttyUSB0
       restartPolicy: Always
       volumes:
         - name: ha-config-root
@@ -137,3 +139,7 @@ spec:
           secret:
             secretName: home-assistant-secrets
             optional: true
+        - name: ttyusb0
+          hostPath:
+            path: /dev/ttyUSB0
+            type: CharDevice
