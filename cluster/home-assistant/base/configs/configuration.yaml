@@ -37,3 +37,9 @@ sonos:
       - !secret sonos_play_5
       - !secret sonos_soundbar
       - !secret sonos_subwoofer
+
+binary_sensor:
+  - platform: ping
+    host: !secret bobcat_ip
+    scan_interval: 60
+    name: !secret bobcat_name
