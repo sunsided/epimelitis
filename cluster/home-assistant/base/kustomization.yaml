@@ -32,6 +32,7 @@ configMapGenerator:
       - configs/scenes.yaml
       - configs/scripts.yaml
       - configs/automations.yaml
+      - configs/schedules.yaml
 
 secretGenerator:
 - name: home-assistant-secrets

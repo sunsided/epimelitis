@@ -121,6 +121,9 @@ spec:
           - name: home-assistant-config-files
             mountPath: /config/scripts.yaml
             subPath: scripts.yaml
+          - name: home-assistant-config-files
+            mountPath: /config/schedules.yaml
+            subPath: schedules.yaml
           - name: home-assistant-secrets
             mountPath: /config/secrets.yaml
             subPath: secrets.yaml

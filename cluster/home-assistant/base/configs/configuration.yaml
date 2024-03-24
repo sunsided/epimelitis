@@ -9,6 +9,7 @@ frontend:
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+schedule: !include schedules.yaml
 
 homeassistant:
   name: My Home

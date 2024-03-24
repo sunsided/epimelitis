@@ -1,1 +1,71 @@
-[]
+- id: plants-kitchen-door-on
+  alias: Pflanzenlicht Küche Tür nach Zeitplan einschalten
+  description: ""
+  mode: single
+  trigger:
+    - platform: state
+      entity_id:
+        - schedule.kuche_pflanzenlicht
+      # from: "off"
+      to: "on"
+  condition: []
+  action:
+    - service: switch.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.plants_door_tz3000_okaz9tjs_ts011f_schalter
+
+- id: plants-kitchen-door-off
+  alias: Pflanzenlicht Küche Tür nach Zeitplan ausschalten
+  description: ""
+  mode: single
+  trigger:
+    - platform: state
+      entity_id:
+        - schedule.kuche_pflanzenlicht
+      # from: "on"
+      to: "off"
+  condition: []
+  action:
+    - service: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.plants_door_tz3000_okaz9tjs_ts011f_schalter
+
+- id: plants-living-room-wall-on
+  alias: Pflanzenlicht Wohnzimmer Wand (Spots) nach Zeitplan einschalten
+  description: ""
+  mode: single
+  trigger:
+    - platform: state
+      entity_id:
+        - schedule.wohnzimmer_pflanzenlicht
+      # from: "off"
+      to: "on"
+  condition: []
+  action:
+    - service: switch.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
+
+- id: plants-living-room-wall-off
+  alias: Pflanzenlicht Wohnzimmer Wand (Spots) nach Zeitplan ausschalten
+  description: ""
+  mode: single
+  trigger:
+    - platform: state
+      entity_id:
+        - schedule.wohnzimmer_pflanzenlicht
+      # from: "on"
+      to: "off"
+  condition: []
+  action:
+    - service: switch.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: switch.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
