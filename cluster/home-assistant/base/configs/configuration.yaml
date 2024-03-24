@@ -18,6 +18,8 @@ homeassistant:
   longitude: !secret home_longitude
   elevation: !secret home_elevation
   time_zone: !secret time_zone
+  external_url: !secret external_url
+  internal_url: "http://home-assistant.home-assistant.svc.cluster.local:8123"
 
 sun:
 system_health:

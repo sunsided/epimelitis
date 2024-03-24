@@ -9,4 +9,5 @@ resources:
   - static.ipaddresspool.yaml
   - dynamic.ipaddresspool.yaml
   - home.ipaddresspool.yaml
+  - home-dynamic.ipaddresspool.yaml
   - l2advertisement.yaml
