@@ -10,11 +10,11 @@
       to: "on"
   condition: []
   action:
-    - service: switch.turn_on
+    - service: light.turn_on
       metadata: {}
       data: {}
       target:
-        entity_id: switch.plants_door_tz3000_okaz9tjs_ts011f_schalter
+        entity_id: light.plants_door_tz3000_okaz9tjs_ts011f_schalter
 
 - id: plants-kitchen-door-off
   alias: Pflanzenlicht Küche Tür nach Zeitplan ausschalten
@@ -28,11 +28,11 @@
       to: "off"
   condition: []
   action:
-    - service: switch.turn_off
+    - service: light.turn_off
       metadata: {}
       data: {}
       target:
-        entity_id: switch.plants_door_tz3000_okaz9tjs_ts011f_schalter
+        entity_id: light.plants_door_tz3000_okaz9tjs_ts011f_schalter
 
 - id: plants-living-room-wall-on
   alias: Pflanzenlicht Wohnzimmer Wand (Spots) nach Zeitplan einschalten
@@ -46,11 +46,11 @@
       to: "on"
   condition: []
   action:
-    - service: switch.turn_on
+    - service: light.turn_on
       metadata: {}
       data: {}
       target:
-        entity_id: switch.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
+        entity_id: light.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
 
 - id: plants-living-room-wall-off
   alias: Pflanzenlicht Wohnzimmer Wand (Spots) nach Zeitplan ausschalten
@@ -64,8 +64,8 @@
       to: "off"
   condition: []
   action:
-    - service: switch.turn_off
+    - service: light.turn_off
       metadata: {}
       data: {}
       target:
-        entity_id: switch.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
+        entity_id: light.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
