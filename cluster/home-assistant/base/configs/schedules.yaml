@@ -47,3 +47,28 @@ wohnzimmer_pflanzenlicht:
   sunday:
     - from: "09:00:00"
       to: "22:30:00"
+
+wohnzimmer_pflanzenlicht_fenster:
+  name: "Pflanzenlicht (Wohnzimmer Fenster)"
+  icon: mdi:home-clock
+  monday:
+    - from: "08:00:00"
+      to: "22:30:00"
+  tuesday:
+    - from: "09:00:00"
+      to: "22:30:00"
+  wednesday:
+    - from: "08:00:00"
+      to: "22:30:00"
+  thursday:
+    - from: "08:00:00"
+      to: "22:30:00"
+  friday:
+    - from: "08:00:00"
+      to: "22:30:00"
+  saturday:
+    - from: "08:00:00"
+      to: "22:30:00"
+  sunday:
+    - from: "08:00:00"
+      to: "22:30:00"
