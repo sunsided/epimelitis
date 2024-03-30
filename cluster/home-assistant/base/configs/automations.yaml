@@ -34,7 +34,7 @@
       target:
         entity_id: light.plants_door_tz3000_okaz9tjs_ts011f_schalter
 
-- id: plants-living-room-wall-on
+- id: plants-living-room-wall-spot-on
   alias: Pflanzenlicht Wohnzimmer Wand (Spots) nach Zeitplan einschalten
   description: ""
   mode: single
@@ -52,7 +52,7 @@
       target:
         entity_id: light.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
 
-- id: plants-living-room-wall-off
+- id: plants-living-room-wall-spot-off
   alias: Pflanzenlicht Wohnzimmer Wand (Spots) nach Zeitplan ausschalten
   description: ""
   mode: single
@@ -70,6 +70,41 @@
       target:
         entity_id: light.plants_spots_wall_tz3000_okaz9tjs_ts011f_schalter
 
+- id: plants-living-room-wall-on
+  alias: Pflanzenlicht Wohnzimmer Wand nach Zeitplan einschalten
+  description: ""
+  mode: single
+  trigger:
+    - platform: state
+      entity_id:
+        - schedule.wohnzimmer_pflanzenlicht
+      # from: "off"
+      to: "on"
+  condition: []
+  action:
+    - service: light.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.plants_wall_tz3000_okaz9tjs_ts011f_schalter
+
+- id: plants-living-room-wall-off
+  alias: Pflanzenlicht Wohnzimmer Wand nach Zeitplan ausschalten
+  description: ""
+  mode: single
+  trigger:
+    - platform: state
+      entity_id:
+        - schedule.wohnzimmer_pflanzenlicht
+      # from: "on"
+      to: "off"
+  condition: []
+  action:
+    - service: light.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.plants_wall_tz3000_okaz9tjs_ts011f_schalter
 
 - id: plants-living-room-window-on
   alias: Pflanzenlicht Wohnzimmer Fenster nach Zeitplan einschalten
