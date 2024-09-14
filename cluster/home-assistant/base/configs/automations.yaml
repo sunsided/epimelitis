@@ -77,7 +77,7 @@
   trigger:
     - platform: state
       entity_id:
-        - schedule.wohnzimmer_pflanzenlicht
+        - schedule.wohnzimmer_pflanzenlicht_wand
       # from: "off"
       to: "on"
   condition: []
@@ -95,7 +95,7 @@
   trigger:
     - platform: state
       entity_id:
-        - schedule.wohnzimmer_pflanzenlicht
+        - schedule.wohnzimmer_pflanzenlicht_wand
       # from: "on"
       to: "off"
   condition: []
