@@ -1,3 +1,28 @@
+- id: all-plants-on
+  description: "Schaltet alle Pflanzenlichter an"
+  mode: single
+  trigger:
+    - platform: conversation
+      command: Pflanzen an
+  action:
+    - type: turn_on
+      device_id: 292a4fe5b9de16c78fd8207cf09938bc
+      entity_id: f7582d00d507705793c40c80a3e38699
+      domain: light
+    - type: turn_on
+      device_id: 6bdb3ee394f53e24a410ab5f1e140401
+      entity_id: 98f7ee5be144ac033e43a331de6609f8
+      domain: light
+    - type: turn_on
+      device_id: afbeed4409d096d77a3f675e6a9c899b
+      entity_id: a45e91e3eb258386c1f9dfd7d7857bbf
+      domain: light
+    - type: turn_on
+      device_id: 774c90cbe4b19b9feb1c0d2f94982715
+      entity_id: 7d31b25eba166733b961135bf5e4da59
+      domain: light
+  alias: Alle Pflanzen an
+
 - id: plants-kitchen-door-on
   alias: Pflanzenlicht Küche Tür nach Zeitplan einschalten
   description: ""
