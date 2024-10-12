@@ -6,7 +6,7 @@ namespace: home-assistant
 
 images:
   - name: ghcr.io/home-assistant/home-assistant
-    newTag: "2024.2.2"
+    newTag: "2024.10.2"
 
 resources:
   - namespace.yaml

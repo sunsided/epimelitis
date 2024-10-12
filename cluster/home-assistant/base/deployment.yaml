@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   labels:
     app: home-assistant
-    version: "2024.2.2"
+    version: "2024.10.2"
   name: home-assistant
   namespace: home-assistant
 spec:
@@ -19,11 +19,11 @@ spec:
     metadata:
       labels:
         app: home-assistant
-        version: "2024.2.2"
+        version: "2024.10.2"
     spec:
       containers:
       - name: app
-        image: "ghcr.io/home-assistant/home-assistant:2024.2"
+        image: "ghcr.io/home-assistant/home-assistant:2024.10"
         imagePullPolicy: IfNotPresent
         securityContext:
           privileged: true

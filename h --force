@@ -1,0 +1,451 @@
+[33mcommit a8698ba57aa48dd5b155cae73c3354ed6bdf27d2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Oct 12 14:52:46 2024 +0200
+
+    Upgrade Home Assistant to 2024.10
+
+[33mcommit ed6b135139d66e9b2c8a26b94f018f1732362cd3[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Oct 12 14:47:46 2024 +0200
+
+    Fix kustomization for metric server
+
+[33mcommit e2726e1091bba91ab2afea662dc0b06c8ef5ff58[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Oct 12 14:46:40 2024 +0200
+
+    Add Justfile for applying cluster state
+
+[33mcommit ae5703a1205b4eadb784dc4d090306d75eac3aee[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Oct 12 14:40:10 2024 +0200
+
+    Update pre-commit hooks
+
+[33mcommit 61262175a61364e4b956220046a984164cfd6fc5[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Oct 12 14:39:41 2024 +0200
+
+    Add automation to turn all plant lights
+
+[33mcommit 12c0721a0e9e38af1368340b5d8a0d757319ab3f[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Sep 14 12:46:40 2024 +0200
+
+    Update schedule for plant lights
+
+[33mcommit efc8fd99d64d939101bd6e4f8f49144b178ef0e1[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Mar 30 15:42:31 2024 +0100
+
+    Add schedule for additional wall spot plant light
+
+[33mcommit 059bf618564a40025be5d906432dc48621bba612[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Mon Mar 25 10:40:57 2024 +0100
+
+    Add schedule for plant lights on window
+
+[33mcommit 323dac7825f3c946f856e4265dae5aed1fa9c3c2[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Mar 24 22:30:28 2024 +0100
+
+    Change plant light entity type from switch to light
+
+[33mcommit a43f9872c92dd9de314dca11dc752cd8a4b8be95[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Mar 24 21:42:21 2024 +0100
+
+    Add automation for plant lights
+
+[33mcommit 303d109082c511d7abee8c7798396035bbacbde8[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Mar 24 21:39:06 2024 +0100
+
+    Add address configuration
+
+[33mcommit f0f2d34662f61ee6a463411557b2630576f36277[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 14:14:00 2024 +0100
+
+    Add Mosquitto account for Raspberry Pi
+
+[33mcommit 1837a697b4e5f69828d0157cd6c308adbda29f3c[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 14:04:44 2024 +0100
+
+    Add Zigbee to badges in README.md
+
+[33mcommit 4a294600f92fc77d7013ba8cb567d8c9340ae2ed[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 14:02:41 2024 +0100
+
+    Add Zigbee configuration in YAML
+
+    Resolves #13
+
+[33mcommit 6a8c14852b64337df616709a2bb5fbd58102716c[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 13:02:01 2024 +0100
+
+    Remove Ping integration (deprecation)
+
+[33mcommit 2dd5447ee4f4419dfa2b76bf665cb14306ed707c[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 13:01:35 2024 +0100
+
+    Mount /dev/ttyUSB0 for Zigbee connection
+
+    See #13
+
+[33mcommit 637324246eebb9b03bd66024cc052dc6af3dc01e[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 12:51:30 2024 +0100
+
+    Fix DHCP Operation not Permitted for Home Assistant
+
+[33mcommit ab44241d3eba26f1c399f710b0e4714c67dd26c1[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 12:10:28 2024 +0100
+
+    Add Bobcat Miner ping sensor
+
+[33mcommit 60656866af2d53b6c3870c4280f90d4eb6859fd9[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 12:06:31 2024 +0100
+
+    Add explicit Sonos configuration
+
+[33mcommit 8f651216c1b69ce3656b95d9cabda49b45a2f63f[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 12:01:29 2024 +0100
+
+    Add more TCP and UDP ports for Home Assistant
+
+[33mcommit 5862f8d0304a56dae8f378a52288d86537943b1d[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 12:00:10 2024 +0100
+
+    Add busybox DaemonSet
+
+[33mcommit d756a6f9366e533688b9a8095e4b922c567ef966[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 25 11:52:27 2024 +0100
+
+    Add working domain.xml example
+
+    This version of the libvirt Talos domain includes working
+    host USB passthrough of the USB 3.0 ports.
+
+[33mcommit 6395993dc62aa3be7454d162c1e5968bf457af32[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Mon Feb 19 21:54:34 2024 +0100
+
+    Add talosctl helper script tc.sh
+
+[33mcommit 7a45b11b919ea5d7d813958ae58d34e5418735ad[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Mon Feb 19 21:53:56 2024 +0100
+
+    Add disk bootstrapping insights to README
+
+[33mcommit 7e907638c23aa383b0f3a44cd589d1d0ebb48779[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Mon Feb 19 21:00:21 2024 +0100
+
+    Move shields underneath the headline
+
+[33mcommit 31aec575fedd7195d459e1ec5a0c6931ad4b37e9[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 17:19:12 2024 +0100
+
+    Add additional volume mount to Talos
+
+[33mcommit 9df010f7dfb6955c0196011afee11df1f8ca6135[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 17:16:52 2024 +0100
+
+    Reformat document
+
+[33mcommit f89124762147c75824b65e0b5d277e86f93042ff[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 17:15:42 2024 +0100
+
+    Fix Local Path assignment according to Talos Linux
+
+[33mcommit 718b40d98f32fc0fb12d1a1de214a1992748dc74[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 17:15:14 2024 +0100
+
+    Fix typo in README.md
+
+[33mcommit f7b29fe5436455d1d38bb7f8efeebff575acff92[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 16:30:43 2024 +0100
+
+    Update README on Talos Kubernetes components
+
+[33mcommit 00aa57200ef5c71a1de9e7b20eced0b68de7972d[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 16:23:25 2024 +0100
+
+    Update section title in README.md
+
+[33mcommit e7617c8c0bb81f7e7b7a7aadfe3b4205a056752d[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 16:22:38 2024 +0100
+
+    Add description of Kubernetes setup
+
+[33mcommit d001bf7a9e133382de12dbe2940d807f2ee6618c[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 07:18:37 2024 +0100
+
+    Put Pi-Hole UDP ports into home network range
+
+[33mcommit 01587d015673450586f9fea7ca6bd2503858ffd6[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 07:00:21 2024 +0100
+
+    Add home address pool for MetalLB
+
+[33mcommit c17c82016d35e6e1c451ad3f60e6e92590887bd6[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 06:48:31 2024 +0100
+
+    Update bridge networking in README.md
+
+[33mcommit 5e1aa63019527d8985ca39968b169792ccbc30bd[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 01:52:08 2024 +0100
+
+    Add Mosquitto authentication
+
+[33mcommit 7c25452fed3278436e65714a1b028ce66c33d7cd[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 00:45:36 2024 +0100
+
+    Fix Pi-Hole and Home Assistant ingresses
+
+[33mcommit bd60ba703e9d022a139bf1958ab2b55eab607f03[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 00:30:44 2024 +0100
+
+    Add .talosconfig via git-crypt
+
+[33mcommit fa13da4385a25eca87bc6f4894906dffcff01212[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 00:27:55 2024 +0100
+
+    Unblock Home Assistant access from home net
+
+[33mcommit f7f1614616791e110165dfe484da1f4e0229f4c2[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 00:08:51 2024 +0100
+
+    Remove Overlays from Home Assistant
+
+[33mcommit b06957285d57bf552546d8125d4e8132c56cfbd1[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sun Feb 18 00:06:31 2024 +0100
+
+    Add Home Assistant configuration files
+
+[33mcommit 9ff7092d409972aec4f4b0ce266a378de2b7499e[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 22:47:34 2024 +0100
+
+    Add more Pi-Hole domain names
+
+[33mcommit fd8c77853de61f3647c74df7a96316a479772ad7[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 22:47:23 2024 +0100
+
+    Rename default values file for Pi-Hole
+
+[33mcommit f7849c05d71c23be3ff2f698033fb3eee8405f09[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 22:46:41 2024 +0100
+
+    Add WebSocket listener for Mosquitto
+
+[33mcommit 978a32fc87bf3075b1a689d5021b976944f797f9[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 22:42:45 2024 +0100
+
+    Remove Ingress from Mosquitto
+
+    See #2
+
+[33mcommit 04d3524e04f881e19314afee4c967d84f24943d0[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 22:42:28 2024 +0100
+
+    Use fixed IP for Mosquitto
+
+    See #2
+
+[33mcommit 3a176743115bdca198b5d982c82576c64fc18f37[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 22:42:10 2024 +0100
+
+    Fix incorrect Mosquitto configuration directory
+
+    See #2
+
+[33mcommit 98c082e7f4963dd755041b7d8932fc3b75203a2d[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 21:38:53 2024 +0100
+
+    Move cluster directory to the repository root
+
+[33mcommit 707cd0383ab7beb110738b6a420569b636ea66f0[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 21:37:51 2024 +0100
+
+    Rename pihole to pi-hole
+
+[33mcommit e0fe4f00739cce00f721c017f7234dd2a67d4d89[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 21:37:13 2024 +0100
+
+    Add ExternalDNS
+
+    Service names are now automatically published to Pi-Hole
+
+    See #8
+
+[33mcommit e456aa1bb0714c97032bbcf07503130b66e9b1a3[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 21:08:45 2024 +0100
+
+    Rename pi-hole folder to pihole
+
+[33mcommit c33c4b26e01c4f51baf5d44d44517a9cf9cbdf08[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 20:29:40 2024 +0100
+
+    Add Pi-Hole
+
+    See #8
+
+[33mcommit f371389832c33828a9057488ff82663bade943c9[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 20:28:18 2024 +0100
+
+    Refactor Home Assistant deployment
+
+[33mcommit 807e00b15226a898c98c19bec257a38708677121[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 19:22:38 2024 +0100
+
+    Add static IP address pool for MetalLB
+
+[33mcommit 255bcd76f2bac85fc1d9d244155d7102707aa58a[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 18:30:23 2024 +0100
+
+    Add working Home Assistant deployment
+
+[33mcommit 7d24e81702b3bbbe02249cff0d9f8d98dfaa9cb9[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 18:29:58 2024 +0100
+
+    Improve YAML for Local Path Provisioner
+
+[33mcommit 6deb3a9b1d71c4a91e9afc0daf8623bf06e2f07a[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 18:29:40 2024 +0100
+
+    Add Mosquitto MQTT Broker
+
+    Closes #2
+
+[33mcommit 2a5d4c285b2be008be720599e2bc0bb20b6117d1[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 18:28:30 2024 +0100
+
+    Add Nginx Ingress
+
+    Closes #3
+    See #7
+
+[33mcommit f697120971cfe2433fde557bfc64612664853c00[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 18:13:06 2024 +0100
+
+    Add MetalLB
+
+    See #6
+
+[33mcommit 277ad00d4b87327fa78ed3cac9822627d4da7105[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 16:26:21 2024 +0100
+
+    Add badges to README.md
+
+[33mcommit b95ae53781e9f1b09d722eadc54b5d078daafe35[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 16:15:35 2024 +0100
+
+    Add illustrations to README.md
+
+[33mcommit 64b9c24eca2725add81e09d7d85a5cff75b7d282[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 15:30:49 2024 +0100
+
+    Add introduction to README.md
+
+[33mcommit f84c44a1eea7b71e9fade227a29728724f9f4fde[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 05:30:42 2024 +0100
+
+    Refactor README.md
+
+[33mcommit e8395b4db461596d22d65db99333852f37d9cc7f[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 03:54:31 2024 +0100
+
+    Add table of contents
+
+[33mcommit af764f7ff4d7985a94ae7bcfcfa9f6490d984e57[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 03:49:55 2024 +0100
+
+    Remove CD-ROM patch
+
+[33mcommit 11904e75725ff380d83d3d774b598dfc14d570d8[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 03:49:29 2024 +0100
+
+    Add working provisioning for Talos in OpenTofu
+
+[33mcommit 3dd4eb16cb0889e684fb16c519462ba737f262e3[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Sat Feb 17 01:22:41 2024 +0100
+
+    Add initial Terraform configuration
+
+[33mcommit c9877be28041d020bdecfe32b52ba4decd955111[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Fri Feb 16 02:17:35 2024 +0100
+
+    Add instruction for Alpine as libvirt host
+
+[33mcommit 83febfe797e0ef8cdf91ee0bb1a4d1be2ec7a488[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Thu Feb 15 22:56:02 2024 +0100
+
+    Add full Talos vs Raspi 5 error message
+
+[33mcommit 7cd801b0e94a3478da917eb3dca0be248ea522a1[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Thu Feb 15 22:12:23 2024 +0100
+
+    Add info about Talos 1.6.7 and 1.7.0-alpha.0
+
+[33mcommit 06e66be4d21f089dde7b49c29df9b38209d5c80a[m
+Author: Markus Mayer <widemeadows@gmail.com>
+Date:   Thu Feb 15 21:11:36 2024 +0100
+
+    Initial commit
