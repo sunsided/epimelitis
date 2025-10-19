@@ -413,7 +413,7 @@ kubectl -k metric-server
 
 ## 3. The part where we use Kubernetes
 
-Change into the [`cluster/`](cluster/) directory and appy the kustomizations, or:
+Change into the [`cluster/`](cluster/) directory and apply the kustomizations, or:
 
 ```shell
 kubectl kustomize --enable-helm cluster | kubectl apply -f -

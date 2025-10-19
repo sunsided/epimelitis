@@ -6,7 +6,7 @@ namespace: home-assistant
 
 images:
   - name: ghcr.io/home-assistant/home-assistant
-    newTag: "2024.10.2"
+    newTag: "2025.10"
 
 resources:
   - namespace.yaml
@@ -25,6 +25,7 @@ configMapGenerator:
     namespace: home-assistant
     literals:
       - TZ="Europe/Berlin"
+      - HASS_HOST="10.22.27.251"
   - name: home-assistant-config-files
     namespace: home-assistant
     files:
