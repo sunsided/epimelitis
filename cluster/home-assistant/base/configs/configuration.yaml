@@ -45,3 +45,61 @@ zha:
   database_path: /config/zigbee.db
   enable_quirks: true
   # custom_quirks_path: /config/zhaquirks
+
+template:
+  - sensor:
+      - name: "Plant Lights Total Power"
+        unique_id: plant_lights_total_power
+        unit_of_measurement: W
+        device_class: power
+        state_class: measurement
+        state: >
+          {{
+            states('sensor.plants_window_switch_tz3000_okaz9tjs_ts011f_leistung')|float(0) +
+            states('sensor.plants_spots_wall_tz3000_okaz9tjs_ts011f_leistung')|float(0) +
+            states('sensor.plants_door_tz3000_okaz9tjs_ts011f_leistung')|float(0)
+          }}
+  - sensor:
+      - name: "Plant Lights Monthly Cost"
+        unique_id: plant_lights_monthly_cost
+        unit_of_measurement: "€"
+        state: >
+          {{
+            states('sensor.plant_lights_monthly')|float(0)
+            * states('input_number.kwh_price')|float(0.30)
+          | round(2) }}
+      - name: "Washing Machine Monthly Cost"
+        unique_id: washingm_machine_monthly_cost
+        unit_of_measurement: "€"
+        state: >
+          {{
+            states('sensor.washing_machine_monthly')|float(0)
+            * states('input_number.kwh_price')|float(0.30)
+          | round(2) }}
+
+sensor:
+  - platform: integration
+    name: "Plant Lights Energy"
+    unique_id: plant_lights_energy
+    source: sensor.plant_lights_total_power
+    unit_prefix: k        # -> kWh
+    round: 3
+    method: trapezoidal   # (optional) slightly smoother with variable sampling
+
+utility_meter:
+  plant_lights_monthly:
+    source: sensor.plant_lights_energy
+    unique_id: plant_lights_energy_utility_meter
+    cycle: monthly
+  washing_machine_monthly:
+    source: sensor.waschmaschine_energy
+    unique_id: waschmaschine_energy_utility_meter
+    cycle: monthly
+
+input_number:
+  kwh_price:
+    name: "Electricity Price"
+    min: 0
+    max: 1
+    step: 0.0001
+    unit_of_measurement: "€/kWh"
