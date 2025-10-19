@@ -76,6 +76,31 @@ template:
             states('sensor.washing_machine_monthly')|float(0)
             * states('input_number.kwh_price')|float(0.30)
           | round(2) }}
+  - sensor:
+      - name: "Total Power (Auto)"
+        unique_id: total_power_auto
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >
+          {% set total = states.sensor
+             | selectattr('attributes.device_class', 'eq', 'power')
+             | selectattr('state', 'is_number')
+             | map(attribute='state') | map('float') | sum %}
+          {{ total }}
+  - sensor:
+      - name: "Total Energy (Auto)"
+        unique_id: total_energy_auto
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: total
+        state: >
+          {% set total = states.sensor
+             | selectattr('attributes.device_class', 'eq', 'energy')
+             | selectattr('attributes.state_class', 'in', ['total','total_increasing'])
+             | selectattr('state', 'is_number')
+             | map(attribute='state') | map('float') | sum %}
+          {{ total }}
 
 sensor:
   - platform: integration
@@ -95,6 +120,11 @@ utility_meter:
     source: sensor.waschmaschine_energy
     unique_id: waschmaschine_energy_utility_meter
     cycle: monthly
+  energy_monthly:
+    source: sensor.total_energy_auto
+    unique_id: total_energy_auto_utility_meter
+    cycle: monthly
+
 
 input_number:
   kwh_price:
